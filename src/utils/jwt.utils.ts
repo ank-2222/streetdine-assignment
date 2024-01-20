@@ -7,7 +7,7 @@ export default class JWTUtils {
     this.PRIVATE_KEY = process.env.JWT_SECRET as jwt.Secret;
   }
 
-  public generateTokens = async (
+  public generateTokens = async (     //generates jwt token
     userData: any
   ): Promise<{
     access_token: string;
@@ -24,7 +24,7 @@ export default class JWTUtils {
     };
   };
 
-  private generateAccessToken = async (userData: any) => {
+  private generateAccessToken = async (userData: any) => {    //generates access token
     const access_token = jwt.sign(
       {
         token: "access_token",

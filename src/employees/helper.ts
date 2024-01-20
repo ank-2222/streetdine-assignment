@@ -2,7 +2,7 @@ import ErrorHandler from "../utils/errors.handler";
 import employeeDb from "./db";
 
 export default class employeeHelper extends employeeDb {
-  public validateEmailAndDob = async (email: string, dob: string) => {
+  public validateEmailAndDob = async (email: string, dob: string) => {   //validates email and dob
     const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
     const isValidDob = dobRegex.test(dob);
 

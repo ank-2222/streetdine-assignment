@@ -7,7 +7,7 @@ const router: Router = Router();
 const { execute } = new UsersAuthController();
 const { protect } = new IUserAuthValidation();
 
-router.post("/employees", execute);
+router.post("/employees", execute);    //routes
 router.get("/allemployees", execute);
 router.get("/employees/:employeeId", execute);
 router.put("/employees/:employeeId", protect, execute);

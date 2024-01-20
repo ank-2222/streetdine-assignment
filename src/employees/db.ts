@@ -1,8 +1,11 @@
 import db from "../config/pg.config";
-import {  IEmployeeResObj } from "./interface";
+import { IEmployeeResObj } from "./interface";
 
 export default class employeeDb {
+
+
   protected isEmployeeExist = async (employee_id: string): Promise<boolean> => {
+    //checks if employee exists
     const query = `SELECT EXISTS(
 		SELECT id FROM employees WHERE employee_id = $1 LIMIT 1);`;
     const res = await db.query(query, [employee_id]);
@@ -13,7 +16,11 @@ export default class employeeDb {
 
     return res.rows[0] as unknown as boolean;
   };
+
+
+
   protected addEmployee = async (reqObj: any): Promise<IEmployeeResObj> => {
+    //adds employee
     const query = db.format(`INSERT INTO employees ? RETURNING *`, reqObj);
     const res = await db.query(query);
     if (res instanceof Error) {
@@ -22,7 +29,11 @@ export default class employeeDb {
       return res.rows[0] as unknown as IEmployeeResObj;
     }
   };
+
+
+
   protected getEmployeeById = async (
+    //gets employee by id
     employee_id: string
   ): Promise<IEmployeeResObj> => {
     const query = `SELECT * FROM employees WHERE employee_id = $1 LIMIT 1`;
@@ -33,7 +44,11 @@ export default class employeeDb {
       return res.rows[0] as unknown as IEmployeeResObj;
     }
   };
+
+
+
   protected getAllEmployee = async (
+    //gets all employees
     page: number,
     limit: number
   ): Promise<IEmployeeResObj[]> => {
@@ -51,14 +66,22 @@ export default class employeeDb {
       return res.rows as any;
     }
   };
+
+
+
   protected deleteEmployee = async (employee_id: string): Promise<any> => {
+    //deletes employee
     const query = `delete from employees where employee_id = $1`;
     const res = await db.query(query, [employee_id]);
     if (res instanceof Error) {
       throw res;
     }
   };
+
+
+  
   protected updateEmployee = async (
+    //updates employee
     reqObj: any,
     employee_id: string
   ): Promise<any> => {

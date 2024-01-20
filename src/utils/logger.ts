@@ -1,7 +1,7 @@
 import { pino } from "pino";
 import pretty from "pino-pretty";
-
-const stream = pretty({
+ 
+const stream = pretty({       //  prettify the logs
   colorize: true,
   translateTime: "yyyy-mm-dd HH:MM:ss",
 });
@@ -16,7 +16,7 @@ export enum LogTypes {
 const Logs = (msg: string) => init().info(msg);
 const customLogHandler = (obj: any) => init().child(obj);
 
-const logger = (msg: any, func: LogTypes) => {
+const logger = (msg: any, func: LogTypes) => {   //  logger function
   if (LogTypes.LOGS) return Logs(msg);
   return customLogHandler(msg);
 };

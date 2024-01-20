@@ -5,13 +5,13 @@ import { IEmployeeReqObj, IEmployeeResObj } from "./interface";
 import { v4 } from "uuid";
 
 export default class employeeService extends employeeHelper {
-  jwtHelper: JWTUtils;
+  jwtHelper: JWTUtils;          //jwt helper
   constructor() {
     super();
     this.jwtHelper = new JWTUtils();
   }
 
-  protected addEmployeeService = async (
+  protected addEmployeeService = async (           //adds employee
     reqObj: IEmployeeReqObj
   ): Promise<any> => {
     const data = {
@@ -47,7 +47,7 @@ export default class employeeService extends employeeHelper {
     return response;
   };
 
-  protected deleteEmployeeService = async (
+  protected deleteEmployeeService = async (    //deletes employee
     employee_id: string
   ): Promise<any> => {
     const isEmployeeExist: any = await this.isEmployeeExist(employee_id);
@@ -61,7 +61,9 @@ export default class employeeService extends employeeHelper {
     await this.deleteEmployee(employee_id);
     return;
   };
-  protected updateEmployeeService = async (
+
+
+  protected updateEmployeeService = async (    //updates employee
     reqObj: any,
     employee_id: string
   ): Promise<any> => {
@@ -76,7 +78,9 @@ export default class employeeService extends employeeHelper {
     await this.updateEmployee(reqObj, employee_id);
     return;
   };
-  protected getEmployeeDetailService = async (
+
+
+  protected getEmployeeDetailService = async (     //gets employee by id
     employee_id: string
   ): Promise<any> => {
     const isEmployeeExist: any = await this.isEmployeeExist(employee_id);
@@ -90,7 +94,10 @@ export default class employeeService extends employeeHelper {
     const data = await this.getEmployeeById(employee_id);
     return data;
   };
-  protected getAllEmployeeDetailService = async (
+
+
+
+  protected getAllEmployeeDetailService = async (   //gets all employees
     page: number,
     limit: number
   ): Promise<any> => {

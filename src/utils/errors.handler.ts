@@ -1,4 +1,4 @@
-export default class ErrorHandler extends Error {
+export default class ErrorHandler extends Error {        //error handler class
   status_code: number;
   message: string;
   data: any;
@@ -11,10 +11,10 @@ export default class ErrorHandler extends Error {
     message_code: string;
   }) {
     super();
-    this.status_code = errorObj.status_code;
-    this.message = errorObj.message;
-    this.data = errorObj.data;
-    this.message_code = errorObj.message_code;
+    this.status_code = errorObj.status_code;      //sets status code, message, data and message code
+    this.message = errorObj.message;                //  of error object
+    this.data = errorObj.data;               //  to error handler class
+    this.message_code = errorObj.message_code;       //  properties
   }
 
   toString() {
