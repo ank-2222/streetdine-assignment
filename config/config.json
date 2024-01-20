@@ -1,0 +1,15 @@
+{
+  "development": {
+    "username": "default",
+    "password": "TodvzuLZH3a7",
+    "database": "verceldb",
+    "host": "ep-winter-meadow-90321505-pooler.ap-southeast-1.postgres.vercel-storage.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
